@@ -99,6 +99,12 @@ hwi_oauth:
     # allows to switch templating engine for bundle views
     #templating_engine: "php"
 
+    #templates:
+    #   login:                 MyBundle:OAuth:login.html.twig
+    #    registration:          MyBundle:OAuth:registration.html.twig
+    #    registration_success:  MyBundle:OAuth:registration_success.html.twig
+    #    connect_confirm:       MyBundle:OAuth:connect_confirm.html.twig
+    #    connect_success:       MyBundle:OAuth:connect_success.html.twig
 ```
 
 ``` yaml
