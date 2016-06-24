@@ -67,7 +67,7 @@ class ConnectController extends Controller
             $error = $error->getMessage();
         }
 
-        return $this->render('HWIOAuthBundle:Connect:login.html.'.$this->getTemplatingEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->container->getParameter('hwi_oauth.templates.login'), array(
             'error' => $error,
         ));
     }
@@ -133,7 +133,7 @@ class ConnectController extends Controller
                 return $this->redirect($targetPath);
             }
 
-            return $this->render('HWIOAuthBundle:Connect:registration_success.html.'.$this->getTemplatingEngine(), array(
+            return $this->container->get('templating')->renderResponse($this->container->getParameter('hwi_oauth.templates.registration_success'), array(
                 'userInformation' => $userInformation,
             ));
         }
@@ -142,7 +142,7 @@ class ConnectController extends Controller
         $key = time();
         $session->set('_hwi_oauth.registration_error.'.$key, $error);
 
-        return $this->render('HWIOAuthBundle:Connect:registration.html.'.$this->getTemplatingEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->container->getParameter('hwi_oauth.templates.registration'), array(
             'key' => $key,
             'form' => $form->createView(),
             'userInformation' => $userInformation,
@@ -227,13 +227,13 @@ class ConnectController extends Controller
                 return $this->redirect($targetPath);
             }
 
-            return $this->render('HWIOAuthBundle:Connect:connect_success.html.' . $this->getTemplatingEngine(), array(
+            return $this->container->get('templating')->renderResponse($this->container->getParameter('hwi_oauth.templates.connect_success'), array(
                 'userInformation' => $userInformation,
                 'service' => $service,
             ));
         }
 
-        return $this->render('HWIOAuthBundle:Connect:connect_confirm.html.' . $this->getTemplatingEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->container->getParameter('hwi_oauth.templates.connect_confirm'), array(
             'key' => $key,
             'service' => $service,
             'form' => $form->createView(),
